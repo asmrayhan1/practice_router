@@ -31,7 +31,7 @@ final router = GoRouter(
                 return const Collection();
               },
               routes: [
-                GoRoute(path: ''),
+                //GoRoute(path: ''),
               ]
             )
           ],

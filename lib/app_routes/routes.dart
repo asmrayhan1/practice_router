@@ -8,6 +8,9 @@ import 'package:practice_router/screen/tab_bar/logout.dart';
 import 'package:practice_router/screen/tab_bar/neseted_navigation.dart';
 import 'package:practice_router/screen/tab_bar/profile.dart';
 import 'package:practice_router/screen/tab_bar/task.dart';
+import 'package:practice_router/screen/tab_bar/test1.dart';
+
+import '../screen/tab_bar/loop.dart';
 
 final rootNavigatorKey = GlobalKey<NavigatorState>();
 final shellNavigatorKey = GlobalKey<NavigatorState>();
@@ -83,5 +86,27 @@ final router = GoRouter(
         return LogoutScreen();
       },
     ),
+    
+    GoRoute(
+        name: 'test1',
+        path: '/test1',
+        builder: (context, state) {
+          return Test1();
+        },
+        routes: [
+          GoRoute(
+            name: 'loop',
+            path: '/loop',
+            builder: (context, state) {
+              final data = state.extra as Map<String, dynamic>;
+              print('Student name: ${data['name']}');
+              print('Student id: ${data['studentId']}');
+              print('Admission status: ${data['status']}');
+              print('Is selected: ${data['isSelected']}');
+              return Loop(data: data);
+            }
+          )
+        ],
+    )
   ],
 );
